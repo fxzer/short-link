@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>link.79px.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f3ee;
+      --bg-subtle: #ece9e1;
+      --panel: #ffffff;
+      --panel-hover: #fffefa;
+      --ink: #1a1a1a;
+      --ink-secondary: #5c5a56;
+      --ink-tertiary: #8a877f;
+      --line: #ddd9d0;
+      --line-hover: #c4bfb4;
+      --accent: #f36c21;
+      --accent-soft: rgba(243, 108, 33, 0.10);
+      --accent-glow: rgba(243, 108, 33, 0.25);
+      --search-glow: rgba(243, 108, 33, 0.15);
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.03);
+      --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.06), 0 12px 36px rgba(0,0,0,0.05);
+      --radius: 10px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #111110;
+      --bg-subtle: #1a1918;
+      --panel: #1e1d1c;
+      --panel-hover: #252423;
+      --ink: #e8e6e1;
+      --ink-secondary: #9e9b95;
+      --ink-tertiary: #6b6862;
+      --line: #2e2d2a;
+      --line-hover: #3d3b37;
+      --accent: #f36c21;
+      --accent-soft: rgba(243, 108, 33, 0.12);
+      --accent-glow: rgba(243, 108, 33, 0.20);
+      --search-glow: rgba(243, 108, 33, 0.12);
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 6px 24px rgba(0,0,0,0.15);
+      --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.3), 0 12px 36px rgba(0,0,0,0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    main {
+      width: min(1320px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 56px 0 80px;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .header-left { flex: 1; }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .summary {
+      margin-top: 14px;
+      max-width: 480px;
+      color: var(--ink-secondary);
+      font-size: 15px;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    .gh-link {
+      margin-left: 8px;
+      color: var(--ink-tertiary);
+      font-size: 13px;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .gh-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 8px;
+    }
+
+    .count-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      font-size: 13px;
+      color: var(--ink-secondary);
+      white-space: nowrap;
+    }
+
+    .count-badge strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    /* ── Toggle Group (theme & lang) ── */
+    .toggle-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+    }
+
+    .toggle-group button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      height: 32px;
+      padding: 0 6px;
+      border: none;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-tertiary);
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+      position: relative;
+      z-index: 1;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .toggle-group button:hover {
+      color: var(--ink);
+    }
+
+    .toggle-group button.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .toggle-group svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* ── Toolbar ── */
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .search-wrap {
+      position: relative;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--ink-tertiary);
+      pointer-events: none;
+      transition: color 0.2s;
+    }
+
+    input, select {
+      width: 100%;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    input {
+      padding: 0 16px 0 40px;
+    }
+
+    select {
+      padding: 0 12px;
+      cursor: pointer;
+    }
+
+    /* ── Custom Dropdown ── */
+    .dropdown {
+      position: relative;
+      width: 100%;
+    }
+
+    .dropdown-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 44px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      user-select: none;
+    }
+
+    .dropdown-trigger:focus,
+    .dropdown.open .dropdown-trigger {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--search-glow);
+    }
+
+    .dropdown-trigger svg {
+      width: 14px;
+      height: 14px;
+      color: var(--ink-tertiary);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .dropdown.open .dropdown-trigger svg {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      max-height: 240px;
+      overflow-y: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--card-shadow-hover);
+      z-index: 100;
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .dropdown.open .dropdown-menu {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+
+    .dropdown-item:hover {
+      background: var(--accent-soft);
+    }
+
+    .dropdown-item.active {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--search-glow);
+    }
+
+    input:focus ~ svg {
+      color: var(--accent);
+    }
+
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--search-glow);
+    }
+
+    input::placeholder {
+      color: var(--ink-tertiary);
+    }
+
+    /* ── Card Grid ── */
+    .links {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .link-card {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 22px 22px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--card-shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.3s ease;
+      opacity: 0;
+      animation: cardIn 0.4s ease forwards;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--line-hover);
+      background: var(--panel-hover);
+    }
+
+    .link-card.featured {
+      border-left: 3px solid var(--accent);
+    }
+
+    .featured-badge {
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 3px 8px;
+      border-radius: 4px;
+      line-height: 1;
+    }
+
+    .link-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+
+    .category {
+      flex: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink-tertiary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .description {
+      margin-top: 10px;
+      color: var(--ink-secondary);
+      font-size: 14px;
+      line-height: 1.65;
+      min-height: calc(2 * 1.65em);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .invite-code {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 8px 10px;
+      border: 1px dashed var(--accent);
+      border-radius: 6px;
+      background: var(--accent-soft);
+      min-height: 34px;
+    }
+
+    .invite-code-empty {
+      border-color: transparent;
+      background: transparent;
+    }
+
+    .invite-code-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .invite-code-value {
+      flex: 1;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+      user-select: all;
+    }
+
+    .copy-code-btn {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border: none;
+      border-radius: 4px;
+      background: transparent;
+      color: var(--ink-tertiary);
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .copy-code-btn:hover {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .copy-code-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      padding: 2px 8px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: var(--ink-tertiary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 16px;
+    }
+
+    .actions a,
+    .actions button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 34px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .actions a:hover,
+    .actions button:hover {
+      border-color: var(--line-hover);
+      color: var(--ink);
+    }
+
+    .actions a.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .actions a.primary:hover {
+      filter: brightness(1.1);
+    }
+
+    .icon-external {
+      width: 12px;
+      height: 12px;
+      margin-left: 4px;
+      vertical-align: -1px;
+      flex-shrink: 0;
+    }
+
+    .actions button.copied {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      padding: 48px 24px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--ink-tertiary);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+      z-index: 200;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── Animation ── */
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      main {
+        width: calc(100% - 32px);
+        padding-top: 36px;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .header-right {
+        padding-top: 0;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .links {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="header-left">
+        <h1>link<span>.</span>79px</h1>
+        <p class="summary"><span data-i18n="summary"></span><a href="https://github.com/eternityspring/link.79px.com" target="_blank" rel="noopener noreferrer" class="gh-link">GitHub</a></p>
+      </div>
+      <div class="header-right">
+        <div class="count-badge" aria-live="polite">
+          <strong id="visibleCount">0</strong>
+          <span data-i18n="links">links</span>
+        </div>
+        <div class="toggle-group" id="langToggle" role="radiogroup" aria-label="Language">
+          <button type="button" data-lang="zh" aria-label="中文">中</button>
+          <button type="button" data-lang="en" aria-label="English">EN</button>
+        </div>
+        <div class="toggle-group" role="radiogroup" aria-label="Theme">
+          <button type="button" data-theme-value="light" title="Light" aria-label="Light">
+            <svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0-3a1 1 0 01-1-1V1a1 1 0 112 0v2a1 1 0 01-1 1zm0 18a1 1 0 01-1-1v-2a1 1 0 112 0v2a1 1 0 01-1 1zm9-9a1 1 0 01-1 1h-2a1 1 0 110-2h2a1 1 0 011 1zM6 12a1 1 0 01-1 1H3a1 1 0 110-2h2a1 1 0 011 1zm13.07-6.07a1 1 0 010 1.41l-1.41 1.42a1 1 0 11-1.42-1.42l1.42-1.41a1 1 0 011.41 0zM7.76 16.24a1 1 0 010 1.41l-1.42 1.42a1 1 0 11-1.41-1.42l1.41-1.41a1 1 0 011.42 0zm10.48 0a1 1 0 01.01 1.41l-1.42 1.42a1 1 0 01-1.41-1.42l1.41-1.41a1 1 0 011.41 0zM7.76 7.76a1 1 0 01-1.41.01L4.93 6.35a1 1 0 011.41-1.42l1.42 1.42a1 1 0 010 1.41z"/></svg>
+          </button>
+          <button type="button" data-theme-value="dark" title="Dark" aria-label="Dark">
+            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+          </button>
+          <button type="button" data-theme-value="system" title="System" aria-label="System">
+            <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm2 0v8h12V6H6zm-1 12h14a1 1 0 110 2H5a1 1 0 110-2z"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="toolbar" aria-label="Filter">
+      <div class="search-wrap">
+        <input id="search" type="search" data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </div>
+      <div class="dropdown" id="categoryDropdown">
+        <button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <span data-i18n="allCategories"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dropdown-menu" role="listbox">
+          <div class="dropdown-item active" data-value="" role="option" data-i18n="allCategories"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="links" class="links" aria-live="polite"></section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const I18N = {
+      zh: {
+        summary: 'Markdown 驱动、Cloudflare Pages 静态 302 的公开短链目录。',
+        links: '个链接',
+        searchPlaceholder: '搜索 slug、标题、描述或目标 URL …',
+        allCategories: '全部分类',
+        visit: '访问',
+        copy: '复制',
+        copied: '链接已复制到剪贴板',
+        codeCopied: '邀请码已复制到剪贴板',
+        inviteCode: '邀请码',
+        copyCode: '复制邀请码',
+        empty: '没有匹配的短链。',
+        loadError: '短链列表加载失败。'
+      },
+      en: {
+        summary: 'A public shortlink directory powered by Markdown and Cloudflare Pages static 302 redirects.',
+        links: 'links',
+        searchPlaceholder: 'Search slug, title, description, or target URL …',
+        allCategories: 'All Categories',
+        visit: 'Visit',
+        copy: 'Copy',
+        copied: 'Link copied to clipboard',
+        codeCopied: 'Invite code copied to clipboard',
+        inviteCode: 'Code',
+        copyCode: 'Copy Code',
+        empty: 'No matching links.',
+        loadError: 'Failed to load links.'
+      }
+    }
+
+    const LANG_KEY = 'link-hao-lang'
+
+    function detectLang() {
+      const saved = localStorage.getItem(LANG_KEY)
+      if (saved && I18N[saved]) return saved
+      const nav = navigator.language || ''
+      return nav.startsWith('zh') ? 'zh' : nav.startsWith('en') ? 'en' : 'zh'
+    }
+
+    let currentLang = detectLang()
+
+    function t(key) {
+      return I18N[currentLang]?.[key] || I18N.zh[key] || key
+    }
+
+    function applyI18n() {
+      document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en'
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        el.textContent = t(el.dataset.i18n)
+      })
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        el.placeholder = t(el.dataset.i18nPlaceholder)
+      })
+
+      document.querySelectorAll('#langToggle button').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === currentLang)
+      })
+    }
+
+    function initLang() {
+      applyI18n()
+
+      document.querySelectorAll('#langToggle button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentLang = btn.dataset.lang
+          localStorage.setItem(LANG_KEY, currentLang)
+          applyI18n()
+          resetCategoryDropdown()
+          render()
+        })
+      })
+    }
+
+    const THEME_KEY = 'link-hao-theme'
+
+    function getSystemTheme() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+
+    function applyTheme(mode) {
+      const resolved = mode === 'system' ? getSystemTheme() : mode
+      document.documentElement.setAttribute('data-theme', resolved)
+
+      document.querySelectorAll('[data-theme-value]').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.themeValue === mode)
+      })
+    }
+
+    function initTheme() {
+      const saved = localStorage.getItem(THEME_KEY) || 'system'
+      applyTheme(saved)
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        if ((localStorage.getItem(THEME_KEY) || 'system') === 'system') {
+          applyTheme('system')
+        }
+      })
+
+      document.querySelectorAll('[data-theme-value]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const mode = btn.dataset.themeValue
+          localStorage.setItem(THEME_KEY, mode)
+          applyTheme(mode)
+        })
+      })
+    }
+
+    initTheme()
+    initLang()
+
+    const state = { links: [], search: '', category: '' }
+
+    const linksEl = document.querySelector('#links')
+    const searchEl = document.querySelector('#search')
+    const visibleCountEl = document.querySelector('#visibleCount')
+    const toastEl = document.querySelector('#toast')
+
+    const dropdown = document.querySelector('#categoryDropdown')
+    const dropdownTrigger = dropdown.querySelector('.dropdown-trigger')
+    const dropdownMenu = dropdown.querySelector('.dropdown-menu')
+
+    dropdownTrigger.addEventListener('click', e => {
+      e.stopPropagation()
+      const open = dropdown.classList.toggle('open')
+      dropdownTrigger.setAttribute('aria-expanded', String(open))
+    })
+
+    document.addEventListener('click', e => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open')
+        dropdownTrigger.setAttribute('aria-expanded', 'false')
+      }
+    })
+
+    dropdownMenu.addEventListener('click', e => {
+      const item = e.target.closest('.dropdown-item')
+      if (!item) return
+      state.category = item.dataset.value
+      dropdownTrigger.querySelector('span').textContent = item.textContent
+      dropdownMenu.querySelectorAll('.dropdown-item').forEach(el => el.classList.remove('active'))
+      item.classList.add('active')
+      dropdown.classList.remove('open')
+      dropdownTrigger.setAttribute('aria-expanded', 'false')
+      render()
+    })
+
+    function resetCategoryDropdown() {
+      state.category = ''
+      dropdownTrigger.querySelector('span').textContent = t('allCategories')
+      dropdownMenu.querySelectorAll('.dropdown-item').forEach(el => {
+        el.classList.toggle('active', el.dataset.value === '')
+        if (el.dataset.value === '') el.textContent = t('allCategories')
+      })
+    }
+
+    let toastTimer
+    function showToast(msg) {
+      toastEl.textContent = msg
+      toastEl.classList.add('show')
+      clearTimeout(toastTimer)
+      toastTimer = setTimeout(() => toastEl.classList.remove('show'), 1500)
+    }
+
+    fetch('/map.json')
+      .then(r => r.ok ? r.json() : [])
+      .then(links => {
+        state.links = Array.isArray(links) ? links : []
+        hydrateCategories(state.links)
+        render()
+      })
+      .catch(() => {
+        linksEl.innerHTML = `<div class="empty">${esc(t('loadError'))}</div>`
+      })
+
+    searchEl.addEventListener('input', e => {
+      state.search = e.target.value.trim().toLowerCase()
+      render()
+    })
+
+    function hydrateCategories(links) {
+      const cats = [...new Set(links.map(l => l.category).filter(Boolean))].sort()
+      for (const c of cats) {
+        const item = document.createElement('div')
+        item.className = 'dropdown-item'
+        item.dataset.value = c
+        item.textContent = c
+        item.setAttribute('role', 'option')
+        dropdownMenu.append(item)
+      }
+    }
+
+    function render() {
+      const visible = state.links
+        .filter(l => !state.category || l.category === state.category)
+        .filter(l => matchesSearch(l, state.search))
+        .sort((a, b) => Number(b.featured) - Number(a.featured) || a.slug.localeCompare(b.slug))
+
+      visibleCountEl.textContent = String(visible.length)
+
+      if (!visible.length) {
+        linksEl.innerHTML = `<div class="empty">${esc(t('empty'))}</div>`
+        return
+      }
+
+      linksEl.replaceChildren(...visible.map((link, i) => renderCard(link, i)))
+    }
+
+    function matchesSearch(link, q) {
+      if (!q) return true
+      return [link.slug, link.title, link.description, link.url, link.category, ...(link.tags || [])]
+        .filter(Boolean)
+        .some(v => String(v).toLowerCase().includes(q))
+    }
+
+    function renderCard(link, index) {
+      const el = document.createElement('article')
+      el.className = `link-card${link.featured ? ' featured' : ''}`
+      el.style.animationDelay = `${index * 60}ms`
+
+      const tags = (link.tags || [])
+        .map(t => `<span class="tag">${esc(t)}</span>`)
+        .join('')
+
+      const codeHtml = link.code
+        ? `<div class="invite-code"><span class="invite-code-label">${esc(t('inviteCode'))}</span><span class="invite-code-value">${esc(link.code)}</span><button type="button" class="copy-code-btn" data-action="copy-code" title="${esc(t('copyCode'))}"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3a1.5 1.5 0 011.5-1.5H11"/></svg></button></div>`
+        : '<div class="invite-code invite-code-empty"></div>'
+
+      const copyBtn = `<button type="button" data-action="copy-link">${esc(t('copy'))}</button>`
+
+      el.innerHTML = `
+        ${link.featured ? '<span class="featured-badge">Featured</span>' : ''}
+        <div class="link-top">
+          <h2>${esc(link.title || link.slug)}</h2>
+          ${link.category ? `<span class="category">${esc(link.category)}</span>` : ''}
+        </div>
+        ${localDesc(link) ? `<p class="description">${esc(localDesc(link))}</p>` : ''}
+        ${codeHtml}
+        ${tags ? `<div class="tags">${tags}</div>` : ''}
+        <div class="actions">
+          <a class="primary" href="${escAttr(link.shortPath)}" target="_blank" rel="noopener noreferrer">${esc(t('visit'))}<svg class="icon-external" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5H3.5v9h9v-3"/><path d="M8.5 1.5h6v6"/><path d="M14.5 1.5l-7 7"/></svg></a>
+          ${copyBtn}
+        </div>
+      `
+
+      el.querySelector('[data-action="copy-link"]').addEventListener('click', async () => {
+        const url = new URL(link.shortPath, location.origin).href
+        try { await navigator.clipboard.writeText(url) } catch {}
+        showToast(t('copied'))
+      })
+
+      const codeBtn = el.querySelector('[data-action="copy-code"]')
+      if (codeBtn) {
+        codeBtn.addEventListener('click', async () => {
+          try { await navigator.clipboard.writeText(link.code) } catch {}
+          showToast(t('codeCopied'))
+        })
+      }
+
+      return el
+    }
+
+    function localDesc(link) {
+      const key = `description_${currentLang}`
+      return link[key] || link.description || ''
+    }
+
+    function esc(v) {
+      return String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')
+    }
+
+    function escAttr(v) {
+      return esc(v).replaceAll('`','&#096;')
+    }
+  </script>
+</body>
+</html>
