@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>link.79px.com - Shortlink Directory</title>
+  <title>link.fxzer.cc.cd - Shortlink Directory</title>
   <meta name="description" content="Markdown-backed shortlink directory with affiliate links, invite codes, and Cloudflare Pages static redirects. Markdown 驱动的公开短链目录，支持推广链接与邀请码，基于 Cloudflare Pages 静态重定向。">
   <meta name="keywords" content="shortlink, affiliate, invite code, VPS, AI, link directory, 短链, 推广链接, 邀请码">
-  <meta name="author" content="eternityspring">
+  <meta name="author" content="fxzer">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://link.79px.com/">
+  <link rel="canonical" href="https://link.fxzer.cc.cd/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="link.79px.com - Shortlink Directory">
+  <meta property="og:title" content="link.fxzer.cc.cd - Shortlink Directory">
   <meta property="og:description" content="Markdown-backed shortlink directory with affiliate links, invite codes, and Cloudflare Pages static redirects.">
-  <meta property="og:url" content="https://link.79px.com/">
-  <meta property="og:image" content="https://link.79px.com/og-image.png">
+  <meta property="og:url" content="https://link.fxzer.cc.cd/">
+
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="link.79px.com - Shortlink Directory">
+  <meta name="twitter:title" content="link.fxzer.cc.cd - Shortlink Directory">
   <meta name="twitter:description" content="Markdown-backed shortlink directory with affiliate links, invite codes, and Cloudflare Pages static redirects.">
-  <meta name="twitter:creator" content="@eternityspring">
+  <meta name="twitter:creator" content="@fxzer">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,10 +33,10 @@
       --ink-tertiary: #8a877f;
       --line: #ddd9d0;
       --line-hover: #c4bfb4;
-      --accent: #f36c21;
-      --accent-soft: rgba(243, 108, 33, 0.10);
-      --accent-glow: rgba(243, 108, 33, 0.25);
-      --search-glow: rgba(243, 108, 33, 0.15);
+      --accent: #40e95c;
+      --accent-soft: rgba(64, 233, 92, 0.10);
+      --accent-glow: rgba(64, 233, 92, 0.25);
+      --search-glow: rgba(64, 233, 92, 0.15);
       --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.03);
       --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.06), 0 12px 36px rgba(0,0,0,0.05);
       --radius: 10px;
@@ -52,10 +52,10 @@
       --ink-tertiary: #6b6862;
       --line: #2e2d2a;
       --line-hover: #3d3b37;
-      --accent: #f36c21;
-      --accent-soft: rgba(243, 108, 33, 0.12);
-      --accent-glow: rgba(243, 108, 33, 0.20);
-      --search-glow: rgba(243, 108, 33, 0.12);
+      --accent: #40e95c;
+      --accent-soft: rgba(64, 233, 92, 0.12);
+      --accent-glow: rgba(64, 233, 92, 0.20);
+      --search-glow: rgba(64, 233, 92, 0.12);
       --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 6px 24px rgba(0,0,0,0.15);
       --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.3), 0 12px 36px rgba(0,0,0,0.2);
     }
@@ -369,6 +369,7 @@
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.3s ease;
       opacity: 0;
       animation: cardIn 0.4s ease forwards;
+      min-width: 0;
     }
 
     .link-card:hover {
@@ -463,12 +464,14 @@
 
     .invite-code-value {
       flex: 1;
+      min-width: 0;
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
       font-weight: 500;
       color: var(--accent);
       letter-spacing: 0.03em;
       user-select: all;
+      overflow-wrap: anywhere;
     }
 
     .copy-code-btn {
@@ -686,13 +689,10 @@
   <main>
     <header>
       <div class="header-left">
-        <h1>link<span>.</span>79px<span>.</span>com</h1>
+        <h1>link<span>.</span>fxzer<span>.</span>cc<span>.</span>cd</h1>
         <p class="summary" data-i18n="summary"></p>
       </div>
       <div class="header-right">
-        <a href="https://github.com/eternityspring/link.79px.com" target="_blank" rel="noopener noreferrer" class="gh-link" title="GitHub">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.338c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        </a>
         <div class="count-badge" aria-live="polite">
           <strong id="visibleCount">0</strong>
           <span data-i18n="links">links</span>
@@ -737,15 +737,15 @@
 
   <footer>
     <div class="footer-inner">
-      <span>Powered by <a href="https://x.com/eternityspring" target="_blank" rel="noopener noreferrer">烁皓</a></span>
+      <span>Powered by <a href="https://x.com/fxzer8888" target="_blank" rel="noopener noreferrer">fxzer</a></span>
       <div class="footer-icons">
-        <a href="https://79px.com" target="_blank" rel="noopener noreferrer" title="Home">
-          <svg viewBox="0 0 1024 1024" width="20" height="20" fill="currentColor" stroke="currentColor" stroke-width="30"><path d="M889.70763321 457.76002481L583.66088227 139.50573901c-18.98584661-19.71350931-44.43887055-30.66723907-71.66172602-30.66723906-27.226228 0-52.67756607 10.84664603-71.66003933 30.66723906L134.39186173 457.76002481c-31.60485297 32.8586597-27.53651789 61.22992402-22.32314649 73.12211059 3.75635934 8.45117633 16.27249822 31.5019855 52.46845779 31.50198551l44.85540043 0 0 244.81766986c0 55.59411978 39.94894555 107.95886636 96.69147418 107.95886636l130.28622829 0L436.37027676 656.05364431c0-27.74562616-4.17204629-43.2904617 24.20427723-43.2904617l102.95123071 0c28.37295099 0 24.20090469 15.43775181 24.2009047 43.2904617L587.72668858 915.16065714l130.18167415 0c56.74252863 0 96.69653339-52.36390366 96.69653339-107.95886637L814.60489612 562.38412091l44.8520279 0c36.19595874 0 48.7137843-23.15957876 52.46677111-31.50198551C917.14128281 518.989948 921.20961871 490.61868369 889.70763321 457.76002481zM859.45776777 512.00421628l-95.33817334 0-1e-8 295.19841825c0 27.74393948-17.94114817 57.47356385-46.31241248 57.47356383l-79.80176953 0L638.00541241 656.05364431c0-55.59917899-17.83743777-93.66952341-74.58333892-93.6695234L460.46999985 562.38412091c-56.74590115 0-74.58502478 38.07034442-74.58502478 93.6695234l0 208.72626445L306.08320554 864.77990876c-28.37126431 0-46.31241247-29.72962436-46.31241248-57.47356385L259.77079306 512.10792666l-95.33817333 0c-0.93761389 0-1.66864993-3.44606946-2.3979993-3.54978067 1.77067447-3.02532413 4.79768445-10.74209189 9.80279131-15.96052248L477.88247519 174.55666144c9.07850116-9.59705557 22.01369952-15.33319766 34.53236802-15.22948728 12.51445303-0.10371121 24.61490497 5.73867169 33.79290106 15.22948727l305.9455685 317.93893754c5.0059498 5.21337141 8.03211685 12.93351251 9.7007668 15.96052249-0.62732482 0.10202453-1.46038459 3.54303562-2.39799931 3.54303561z"/></svg>
+        <a href="https://github.com/fxzer/short-link" target="_blank" rel="noopener noreferrer" title="GitHub" style="scale:1.1">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.338c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         </a>
-        <a href="https://x.com/eternityspring" target="_blank" rel="noopener noreferrer" title="X">
+        <a href="https://x.com/fxzer8888" target="_blank" rel="noopener noreferrer" title="X">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-        <a href="mailto:eternityspring@gmail.com" title="Email">
+        <a href="mailto:fxzer8888@gmail.com" title="Email">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 7 12 14 2 7"/></svg>
         </a>
       </div>
@@ -990,7 +990,7 @@
       el.innerHTML = `
         ${link.featured ? '<span class="featured-badge">Featured</span>' : ''}
         <div class="link-top">
-          <h2>${esc(link.title || link.slug)}</h2>
+          <h2>${esc(localTitle(link))}</h2>
           ${link.category ? `<span class="category">${esc(link.category)}</span>` : ''}
         </div>
         ${localDesc(link) ? `<p class="description">${esc(localDesc(link))}</p>` : ''}
@@ -1017,6 +1017,11 @@
       }
 
       return el
+    }
+
+    function localTitle(link) {
+      if (currentLang === 'en' && link.title_en) return link.title_en
+      return link.title || link.slug
     }
 
     function localDesc(link) {

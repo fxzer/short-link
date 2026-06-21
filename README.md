@@ -1,4 +1,4 @@
-# link.79px.com
+# link.fxzer.cc.cd
 
 [English](#english) | [中文](#中文)
 

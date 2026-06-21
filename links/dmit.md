@@ -1,17 +1,19 @@
 ---
-url: https://www.dmit.io/aff.php?aff=22529
-title: DMIT
-description: Premium cloud servers with CN2 GIA and optimized network for Asia-Pacific
-description_zh: 高端云服务器，提供 CN2 GIA 优化线路，覆盖亚太地区
-description_en: Premium cloud servers with CN2 GIA and optimized network for Asia-Pacific
-code: 22529
+url: https://www.dmit.io/aff.php?aff=22598
+title: DMIT 高端云服务器
+title_en: DMIT Premium Cloud
+description: 提供 CN2 GIA 顶级优化线路，超低延迟覆盖亚太地区
+description_zh: 提供 CN2 GIA 顶级优化线路，超低延迟覆盖亚太地区
+description_en: CN2 GIA premium routing with ultra-low latency across Asia-Pacific.
+code: "22598"
 category: VPS
 tags:
   - vps
   - cloud
+  - cn2-gia
 status: active
 listed: true
 featured: false
 ---
 
-DMIT cloud server affiliate link.
+DMIT 高端云服务器 (CN2 GIA 线路)

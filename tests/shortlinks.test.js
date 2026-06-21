@@ -93,6 +93,7 @@ listed: true
       shortUrl: 'https://go.example.com/openai',
       url: 'https://openai.com',
       title: 'OpenAI',
+      title_en: '',
       description: 'OpenAI 官方网站',
       description_zh: '',
       description_en: '',
