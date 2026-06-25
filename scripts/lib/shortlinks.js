@@ -47,7 +47,11 @@ export async function loadShortlinks({ rootDir = process.cwd(), linksDir = 'link
     })
   }
 
-  return links.sort((a, b) => a.slug.localeCompare(b.slug))
+  return links.sort((a, b) => {
+    const da = (b.description_zh || b.description || '').length
+    const db = (a.description_zh || a.description || '').length
+    return da - db
+  })
 }
 
 export function validateShortlinks(links) {

@@ -7,6 +7,10 @@
     "build": "node scripts/build.js",
     "test": "node --test tests/*.test.js",
     "validate": "node scripts/validate.js",
-    "preview": "python3 -m http.server 3456 --directory public"
+    "dev": "npm run build && (chokidar 'links/*.md' 'public/index.html' -c 'npm run build' & live-server public --port=3456 --wait=500 & wait)"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "live-server": "^1.2.2"
   }
 }

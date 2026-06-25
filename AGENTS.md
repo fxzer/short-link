@@ -44,6 +44,16 @@ Always regenerate generated files with:
 npm run build
 ```
 
+## Dev Server With Hot Reload
+
+Use `npm run dev` for local development:
+
+- Auto-rebuilds when `links/*.md` or `public/index.html` change
+- `live-server` auto-refreshes the browser on file changes
+- Serves at `http://127.0.0.1:3456`
+
+No need to run `build` manually while dev server is running.
+
 ## Required Checks
 
 After changing `links/*.md`, run:
